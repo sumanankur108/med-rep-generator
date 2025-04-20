@@ -3,9 +3,9 @@ from flask import Flask, request, render_template, send_file
 from werkzeug.utils import secure_filename
 from dotenv import load_dotenv
 
-from blip_caption import generate_caption
-from groq_client import get_medical_report
-from pdf_generator import generate_pdf_report
+from backend.blip_caption import generate_caption
+from backend.groq_client import get_medical_report
+from backend.pdf_generator import generate_pdf_report
 
 # Load environment variables (used locally; Railway uses secrets panel)
 load_dotenv()
