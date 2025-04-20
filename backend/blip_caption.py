@@ -1,21 +1,35 @@
 import os
+import requests
+import base64
 from PIL import Image
-from transformers import BlipProcessor, BlipForConditionalGeneration
-from huggingface_hub import snapshot_download
-
-# Load token securely from environment variable
-hf_token = os.getenv("HF_TOKEN")
-
-# Download the model snapshot using token
-model_path = snapshot_download("Salesforce/blip-image-captioning-base", token=hf_token)
-
-# Load processor and model from the downloaded snapshot
-processor = BlipProcessor.from_pretrained(model_path)
-model = BlipForConditionalGeneration.from_pretrained(model_path)
 
 def generate_caption(image_path: str) -> str:
-    image = Image.open(image_path).convert("RGB")
-    inputs = processor(image, return_tensors="pt")
-    output = model.generate(**inputs)
-    caption = processor.decode(output[0], skip_special_tokens=True)
-    return caption
+    HF_TOKEN = os.getenv("HF_TOKEN")
+    if not HF_TOKEN:
+        raise EnvironmentError("Missing Hugging Face token")
+
+    # Read and encode image
+    with open(image_path, "rb") as img_file:
+        img_bytes = img_file.read()
+        b64_image = base64.b64encode(img_bytes).decode("utf-8")
+
+    headers = {
+        "Authorization": f"Bearer {HF_TOKEN}",
+        "Content-Type": "application/json"
+    }
+
+    payload = {
+        "inputs": b64_image
+    }
+
+    response = requests.post(
+        "https://api-inference.huggingface.co/models/Salesforce/blip-image-captioning-base",
+        headers=headers,
+        json=payload
+    )
+
+    if response.status_code != 200:
+        raise Exception(f"Failed to get caption: {response.text}")
+
+    result = response.json()
+    return result[0]["generated_text"]
