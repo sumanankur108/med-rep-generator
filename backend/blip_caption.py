@@ -1,9 +1,13 @@
+import os
 from PIL import Image
 from transformers import BlipProcessor, BlipForConditionalGeneration
 from huggingface_hub import snapshot_download
 
-# Download the model snapshot (only once)
-model_path = snapshot_download("Salesforce/blip-image-captioning-base")
+# Load token securely from environment variable
+hf_token = os.getenv("HF_TOKEN")
+
+# Download the model snapshot using token
+model_path = snapshot_download("Salesforce/blip-image-captioning-base", token=hf_token)
 
 # Load processor and model from the downloaded snapshot
 processor = BlipProcessor.from_pretrained(model_path)
