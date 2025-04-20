@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block title %}Success - Medbud{% endblock %}
+{% block content %}
+<div class="text-center py-5">
+  <h2 class="text-success">✅ Report Ready!</h2>
+  <p>Your PDF medical report has been generated successfully.</p>
+  <a href="{{ url_for('download_pdf', filename=pdf_file) }}" class="btn btn-primary mb-2">Download PDF</a><br>
+  <a href="/upload" class="btn btn-outline-secondary mt-2">Generate Another</a>
+</div>
+{% endblock %}

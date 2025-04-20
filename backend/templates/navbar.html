@@ -1,0 +1,33 @@
+<nav class="bg-white dark:bg-darkcard shadow-md">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="/" class="text-2xl font-bold text-blue-600"> ⚕️Medbud</a>
+
+    <div class="hidden md:flex items-center space-x-6">
+      <a href="/" class="hover:text-blue-500">Home</a>
+      <a href="/" class="hover:text-blue-500">Find Doctors</a>
+      <a href="#resources" class="hover:text-blue-500">Resources</a>
+      <a href="#stories" class="hover:text-blue-500">Success Stories</a>
+      <a href="#faq" class="hover:text-blue-500">FAQ</a>
+      <button onclick="toggleTheme()" id="theme-icon" class="text-xl">🌙</button>
+    </div>
+
+    <div class="md:hidden">
+      <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden px-4 pb-4 space-y-2 dark:bg-darkcard">
+    <a href="/" class="block hover:text-blue-500">Home</a>
+    <a href="/upload" class="block hover:text-blue-500">Find Doctors</a>
+    <a href="#resources" class="block hover:text-blue-500">Resources</a>
+    <a href="#stories" class="block hover:text-blue-500">Success Stories</a>
+    <a href="#faq" class="block hover:text-blue-500">FAQ</a>
+    <button onclick="toggleTheme()" class="block" id="mobile-theme-icon">🌙</button>
+  </div>
+</nav>

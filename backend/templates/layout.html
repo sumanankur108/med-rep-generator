@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Medbud{% endblock %}</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Theme config -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#2563eb',
+            darkbg: '#0f172a',
+            darkcard: '#1e293b'
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body class="bg-white text-gray-900 dark:bg-darkbg dark:text-white transition duration-300">
+
+  {% include 'navbar.html' %}
+
+  <main class="max-w-7xl mx-auto px-4 py-10">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include 'footer.html' %}
+
+  <!-- Theme toggle script -->
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      const icon = document.getElementById("theme-icon");
+      if (html.classList.contains('dark')) {
+        icon.innerHTML = "☀️";
+      } else {
+        icon.innerHTML = "🌙";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+{% block title %}Home - Medbud{% endblock %}
+{% block content %}
+
+<!-- Hero Section -->
+<section class="flex flex-col md:flex-row items-center justify-between py-12 px-4">
+  <div class="md:w-1/2 text-left space-y-6">
+    <h1 class="text-5xl font-extrabold leading-tight">AI Meets Diagnostics<br><span class="text-primary">Your Medical Companion</span></h1>
+    <p class="text-lg text-gray-600 dark:text-gray-300">Get instant AI-powered analysis of your medical scans. Upload your diagnostic images and receive comprehensive reports within minutes.</p>
+    <div class="flex gap-4 mt-4">
+      <a href="/upload" class="bg-primary text-white px-6 py-3 rounded shadow-md hover:bg-blue-700 transition">Upload Your Scan</a>
+      <a href="#resources" class="bg-blue-100 text-primary px-6 py-3 rounded shadow hover:bg-blue-200 transition">Learn More →</a>
+    </div>
+  </div>
+  <div class="md:w-1/2">
+    <img src="https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+         alt="Medical Diagnosis"
+         class="w-full max-w-md rounded-xl shadow-xl mx-auto" />
+  </div>
+</section>
+
+<!-- Features Section -->
+<section id="resources" class="py-16 bg-gray-50 dark:bg-darkcard text-center transition duration-300">
+  <h2 class="text-4xl font-bold mb-4">Empowering Diagnosis</h2>
+  <p class="mb-10 text-gray-600 dark:text-gray-300">
+    Advanced features designed to revolutionize medical imaging analysis
+  </p>
+
+  <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    
+    <!-- Card 1 -->
+    <div class="bg-white dark:bg-gray-900 rounded-xl shadow-md p-6 transition transform hover:scale-105">
+      <div class="text-4xl mb-2 text-blue-600">🧠</div>
+      <h5 class="font-semibold mb-1">AI-Powered Analysis</h5>
+      <p class="text-sm text-gray-700 dark:text-gray-300">
+        Advanced Visual-Language Model trained on the ROCO dataset for accurate medical image interpretation.
+      </p>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="bg-white dark:bg-gray-900 rounded-xl shadow-md p-6 transition transform hover:scale-105">
+      <div class="text-4xl mb-2 text-blue-600">👨‍⚕️</div>
+      <h5 class="font-semibold mb-1">Expert Consultation</h5>
+      <p class="text-sm text-gray-700 dark:text-gray-300">
+        Connect with specialized healthcare professionals for personalized medical advice.
+      </p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="bg-white dark:bg-gray-900 rounded-xl shadow-md p-6 transition transform hover:scale-105">
+      <div class="text-4xl mb-2 text-blue-600">📚</div>
+      <h5 class="font-semibold mb-1">Educational Resources</h5>
+      <p class="text-sm text-gray-700 dark:text-gray-300">
+        Access comprehensive medical information and stay updated with the latest research.
+      </p>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="bg-white dark:bg-gray-900 rounded-xl shadow-md p-6 transition transform hover:scale-105">
+      <div class="text-4xl mb-2 text-blue-600">📞</div>
+      <h5 class="font-semibold mb-1">24/7 Support</h5>
+      <p class="text-sm text-gray-700 dark:text-gray-300">
+        Round-the-clock assistance for all your medical imaging and consultation needs.
+      </p>
+    </div>
+  </div>
+</section>
+
+  </div>
+</section>
+
+
+<!-- 🌟 Success Stories Section -->
+<section id="stories" class="py-16 bg-gray-50 dark:bg-gray-800">
+  <div class="max-w-7xl mx-auto px-4 text-center">
+    <h2 class="text-4xl font-bold mb-4 text-gray-800 dark:text-white">Success Stories</h2>
+    <p class="text-gray-600 dark:text-gray-300 mb-12">
+      Hear from healthcare professionals and patients who have experienced the power of AI-assisted diagnosis
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Story 1 -->
+      <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md hover:scale-105 transform transition duration-300">
+        <div class="flex items-center gap-4 mb-3">
+          <img src="https://randomuser.me/api/portraits/women/50.jpg" alt="Dr. Priya Sharma" class="w-14 h-14 rounded-full" />
+          <div class="text-left">
+            <h5 class="font-semibold text-gray-900 dark:text-white">Dr. Priya Sharma</h5>
+            <p class="text-sm text-gray-500 dark:text-gray-400">Radiologist</p>
+          </div>
+        </div>
+        <div class="flex gap-1 text-yellow-400 mb-2">
+          ⭐⭐⭐⭐⭐
+        </div>
+        <p class="text-gray-700 dark:text-gray-300">"Medbud has revolutionized how we analyze medical images. The AI assistance helps us make faster and more accurate diagnoses."</p>
+      </div>
+
+      <!-- Story 2 -->
+      <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md hover:scale-105 transform transition duration-300">
+        <div class="flex items-center gap-4 mb-3">
+          <img src="https://randomuser.me/api/portraits/men/31.jpg" alt="Rajesh Kumar" class="w-14 h-14 rounded-full" />
+          <div class="text-left">
+            <h5 class="font-semibold text-gray-900 dark:text-white">Rajesh Kumar</h5>
+            <p class="text-sm text-gray-500 dark:text-gray-400">Patient</p>
+          </div>
+        </div>
+        <div class="flex gap-1 text-yellow-400 mb-2">
+          ⭐⭐⭐⭐⭐
+        </div>
+        <p class="text-gray-700 dark:text-gray-300">"Thanks to Medbud's early detection system, my condition was diagnosed early. The platform made it easy to connect with specialists."</p>
+      </div>
+
+      <!-- Story 3 -->
+      <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md hover:scale-105 transform transition duration-300">
+        <div class="flex items-center gap-4 mb-3">
+          <img src="https://randomuser.me/api/portraits/women/76.jpg" alt="Dr. Anita Desai" class="w-14 h-14 rounded-full" />
+          <div class="text-left">
+            <h5 class="font-semibold text-gray-900 dark:text-white">Dr. Anita Desai</h5>
+            <p class="text-sm text-gray-500 dark:text-gray-400">Oncologist</p>
+          </div>
+        </div>
+        <div class="flex gap-1 text-yellow-400 mb-2">
+          ⭐⭐⭐⭐⭐
+        </div>
+        <p class="text-gray-700 dark:text-gray-300">"The accuracy of Medbud's AI analysis is impressive. It's become an invaluable tool in our diagnostic process."</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}
