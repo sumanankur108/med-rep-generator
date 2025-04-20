@@ -88,3 +88,8 @@ def page_not_found(e):
 # Run locally
 if __name__ == "__main__":
     app.run(debug=True)
+
+@app.route('/health')
+def health():
+    return "✅ Flask app is running"
+
