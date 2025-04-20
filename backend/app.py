@@ -7,10 +7,10 @@ from backend.blip_caption import generate_caption
 from backend.groq_client import get_medical_report
 from backend.pdf_generator import generate_pdf_report
 
-# Load environment variables (used locally; Railway uses secrets panel)
+# Load environment variables
 load_dotenv()
 
-# Flask config
+# Flask app setup
 app = Flask(__name__)
 UPLOAD_FOLDER = 'static/uploads'
 PDF_FOLDER = 'static/pdf'
@@ -21,6 +21,11 @@ os.makedirs(PDF_FOLDER, exist_ok=True)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # ---------------- ROUTES ---------------- #
+
+# 🏥 Health check route
+@app.route('/health')
+def health_check():
+    return "✅ Server is running"
 
 # 🏠 Home Page
 @app.route('/')
@@ -36,29 +41,37 @@ def upload_page():
 @app.route('/upload', methods=['POST'])
 def handle_upload():
     try:
+        print("🟢 Received upload request")
         image = request.files['image']
         if not image:
+            print("🔴 No image file received")
             return render_template('error.html', error="No file uploaded.")
 
-        # Save uploaded image
         filename = secure_filename(image.filename)
         image_path = os.path.join(UPLOAD_FOLDER, filename)
         image.save(image_path)
+        print(f"✅ Saved image to: {image_path}")
 
         # Generate caption
+        print("🧠 Generating caption...")
         caption = generate_caption(image_path)
+        print(f"🧾 Caption: {caption}")
 
         # Get AI-generated diagnosis
+        print("📡 Calling Groq API...")
         report = get_medical_report(caption)
+        print("✅ Report generated.")
 
         # Save report as PDF
         pdf_filename = f"medical_report_{os.path.splitext(filename)[0]}.pdf"
         pdf_path = os.path.join(PDF_FOLDER, pdf_filename)
         generate_pdf_report(report, pdf_path)
+        print(f"📄 PDF saved at: {pdf_path}")
 
         return render_template('success.html', pdf_file=pdf_filename)
 
     except Exception as e:
+        print(f"❌ Exception: {e}")
         return render_template("error.html", error=str(e))
 
 # 📥 PDF Download
@@ -71,3 +84,7 @@ def download_pdf(filename):
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("error.html", error="Page not found"), 404
+
+# Run locally
+if __name__ == "__main__":
+    app.run(debug=True)
